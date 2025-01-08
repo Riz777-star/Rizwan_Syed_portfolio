@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+  </head>
+  <body>
+    <nav id="desktop-nav">
+      <div class="logo">Rizwan Syed</div>
+      <div>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#Skills">Skills</a></li>
+          <li><a href="#Experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="logo">Rizwan Syed</div>
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="#about" onclick="toggleMenu()">About</a></li>
+          <li><a href="#Skills" onclick="toggleMenu()">Skills</a></li>
+          <li><a href="#Experience" onclick="toggleMenu()">Experience</a></li>
+          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        </div>
+      </div>
+    </nav>
+    <section id="profile">
+      <div class="section__pic-container">
+        <img class = "riz" src="./assets/pic.png" alt="Krishna Charan Thota profile picture" />
+      </div>
+      <div class="section__text">
+        <p class="section__text__p1">Hello, I'm</p>
+        <h1 class="title">Rizwan Syed</h1>
+        <p class="section__text__p2">Graduate Student At UB</p>
+        <div class="btn-container">
+          <button
+            class="btn btn-color-2"
+            onclick="window.open('./assets/Syed_Rizwan_Resume.pdf')"
+          >
+            Download CV
+          </button>
+          <button class="btn btn-color-1" onclick="location.href='./#contact'">
+            Contact Info
+          </button>
+        </div>
+        <div id="socials-container">
+          <img
+            src="./assets/linkedin.png"
+            alt="My LinkedIn profile"
+            class="icon"
+            onclick="location.href='https://www.linkedin.com/in/rizwan-syed-79b798211'"
+          />
+          <img
+            src="./assets/github.png"
+            alt="My Github profile"
+            class="icon"
+            onclick="location.href='https://github.com/Riz777-star'"
+          />
+        </div>
+      </div>
+    </section>
+    <section id="about">
+      <p class="section__text__p1">Get To Know More</p>
+      <h1 class="title">About Me</h1>
+
+        <div class="about-details-container-education">
+          <div class="about-containers">
+            <div class="details-container">
+              <img
+                src="./assets/experience.png"
+                alt="Experience icon"
+                class="icon"
+              />
+              <h3>Experience</h3>
+              <p>2.5+ years <br /></p>
+              <p><strong>Student Researcher</strong>
+                 at The State University of New York at Buffalo
+                </p>
+
+
+                <p><strong>Dell Campus Ambassador</strong>
+                 at Dell Technologies
+                  </p>
+                  
+                
+                <p><strong>Software Developer</strong>
+                at Vaya Group 
+                </p>
+                
+            </div>
+            <div class="details-container">
+              <img
+                src="./assets/education.png"
+                alt="Education icon"
+                class="icon"
+              />
+              <h3>Education</h3>
+             
+             <p><strong>M.S. in Computer and Information Science</strong><br />
+              State University of New York at Buffalo<br />
+              Aug 2023 – Dec 2024</p>
+              
+              <p><strong>B.Sc. in Computer Science and Engineering</strong><br />
+              Sathyabama University, Chennai<br />
+              Jun 2019 – May 2023</p>
+              
+            </div>
+          </div>
+          <div class="text-container">
+            <p>
+              I am a passionate Software Engineer with a strong foundation in full-stack development and machine learning. My journey in technology has been marked by significant achievements, including the publication of my research on Face Mask Detection in an international journal and recognition for maintaining academic excellence in the top 15% at Sathyabama University. During my tenure at Vaya Group, I developed sophisticated supplier onboarding systems and implemented efficient file searching algorithms, demonstrating my ability to deliver high-performance solutions.</p>
+<p><br>
+My technical expertise spans multiple domains, validated through certifications from prestigious institutions, including Angular development from Credo Systems and Java programming from Informatics. As a Student Researcher at the University at Buffalo, I contributed to groundbreaking research in energy efficiency for Large Language Models, achieving substantial reductions in CO2 emissions while maintaining model performance.
+</p><p><br>
+Beyond technical skills, I bring strong leadership qualities developed through experiences like serving as a Dell Campus Ambassador and leading innovative projects. My competitive spirit, honed as a district-level badminton player in India, translates into a results-driven approach in my professional work. I thrive in challenging environments and am deeply committed to continuous learning and excellence in everything I undertake.
+</p><p>
+I am always open to new opportunities and constantly strive to improve and prove myself in this competitive world.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="Skills">
+      <p class="section__text__p1">Explore My</p>
+      <h1 class="title">Skills</h1>
+      <div class="Skills-details-container">
+        <div class="about-containers">
+          <div class="details-container-skills">
+            <h2 class="Skills-sub-title">Tools & Methodologies</h2>
+              <div class="container">
+                <div class="skills">
+                  <div class="skill">Git</div>
+                  <div class="skill">GitHub</div>
+                  <div class="skill">Agile</div>
+                  <div class="skill">Selenium</div>
+                  <div class="skill">Pycharm</div>
+                  <div class="skill">Intellij</div>
+                  <div class="skill">visual Studio</div>
+                  <div class="skill">Linux</div>
+                  <div class="skill">GDB</div>
+                  <div class="skill">CI/CD</div>
+                  <div class="skill">Docker</div>
+                  <div class="skill">Kubernetes</div>
+              </div>
+              </div>
+          </div>
+          <div class="details-container-skills">
+            <h2 class="Skills-sub-title">Programming Languages</h2>
+              <div class="container">
+                  <div class="skills">
+                    <div class="skill">Java</div>
+                    <div class="skill">HTML</div>
+                    <div class="skill">CSS</div>
+                    <div class="skill">TypeScript</div>
+                    <div class="skill">JavaScript</div>
+                    <div class="skill">GraphQl</div>
+                    <div class="skill">C++</div>
+                    <div class="skill">Python</div>
+                    <div class="skill">JSON</div>
+                  </div>
+              </div>
+          </div>
+          <div class="details-container-skills">
+            <h2 class="Skills-sub-title">AWS Technologies & Databases</h2>
+              <div class="container">
+                  <div class="skills">
+                    <div class="skill">API Gateway</div>
+                    <div class="skill">S3</div>
+                    <div class="skill">SQL Server</div>
+                    <div class="skill">AWS Services</div>
+                    <div class="skill">API Gateway</div>
+                    <div class="skill">DynamoDB</div>
+                    <div class="skill">CDK</div>
+                    <div class="skill">DynamoDB</div>
+                    <div class="skill">AWS Redshift</div>
+                    <div class="skill">MySQL</div>
+                  </div>
+              </div>
+          </div>
+          <div class="details-container-skills">
+            <h2 class="Skills-sub-title">Frameworks & Libraries</h2>
+              <div class="container">
+                  <div class="skills">
+                    <div class="skill">REST API</div>
+                    <div class="skill">Spring Boot</div>
+                    <div class="skill">PyTorch </div>
+                    <div class="skill">Node.js</div>
+                    <div class="skill">PowerBI</div>
+                    <div class="skill">React.js</div>
+                    <div class="skill">NgRx</div>
+                    <div class="skill">Redux</div>
+                    <div class="skill">JWT</div>
+                    <div class="skill">Angular.js</div>
+                    <div class="skill">TensorFlow</div>
+                    <div class="skill">Keras</div>
+                    <div class="skill">OpenCV</div>
+                    <div class="skill">Bootstrap</div>
+                  </div>
+              </div>
+          </div>
+    </section>
+    <section id="Experience">
+      <p class="section__text__p1">Explore my </p>
+      <h1 class="title">Experience</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="./assets/ub.png"
+                alt="Project 1"
+                class="project-experience-img-amazon"
+              />
+              <p>
+                As a Student Researcher at the University at Buffalo, I spearheaded innovative research focused on enhancing energy efficiency in Large Language Models, particularly GPT-2. 
+                My research encompassed advanced techniques including Quantization, Distillation, and Low-Rank Factorization methodologies.
+                Through meticulous implementation of Quantization methods, I achieved remarkable results, reducing CO2 emissions by 19.8% while maintaining robust model performance with only a minimal 6% increase in perplexity scores.
+                A significant breakthrough in my research came from combining distillation and quantization approaches, which yielded an impressive 45.2% reduction in emissions, though this came with a 57.4% increase in perplexity - 
+                highlighting the critical balance between environmental impact and model accuracy.
+                Throughout this research tenure, I developed extensive proficiency in Git version control systems, enabling efficient collaboration and code management. 
+                This experience not only contributed to the field of sustainable AI but also demonstrated my capability to conduct impactful research in cutting-edge machine learning technologies
+            </div>
+          </div>
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="./assets/dell_tech.png"
+                class="project-experience-img-abhi"/>
+                <p>
+                  As a Dell Campus Ambassador at Dell Technologies , I played a pivotal role in utilizing SQL and PowerBI to analyze and present critical data insights, 
+                  effectively identifying trends and anomalies that supported strategic decision-making, resulting in a 75% reduction in analysis time.
+                  I led a team to promote Dell Technologies on campus, driving student engagement through seminars and workshops focused on cutting-edge advancements. 
+                  Collaborating with cross-functional teams, I streamlined communication and task management, boosting the efficiency of event execution by 20%. 
+                  Additionally, I spearheaded the development of interactive dashboards for event feedback, enabling real-time data collection and analysis to enhance future initiatives.
+                  My efforts in conducting technical workshops on modern data analysis tools empowered students with industry-relevant skills, while data-driven strategies to target key demographics increased engagement and participation by 30%. 
+                  Through these initiatives, I significantly enhanced brand visibility and fostered a tech-savvy culture among students, aligning with Dell Technologies' mission of innovation and leadership in technology.
+                </p>
+            </div>
+          </div>
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="./assets/vaya.png"
+                class="project-experience-img-uclid"
+              />
+              <p>As a Software Engineer at Vaya Group, I developed a sophisticated supplier onboarding system for Vipani.ai using a microservices-based architecture with Java and SpringBoot.
+                 This system enabled suppliers to provide comprehensive details for effective B2B procurement, enhancing the onboarding process significantly.
+                  I implemented a robust file searching system that achieved optimal performance with a p95 latency under 10 milliseconds over a million files, utilizing a Trie-based algorithm with JavaScript, React, and multi-stage caching.
+                   Leveraging object-oriented programming concepts, I maintained a modular and structurally simple codebase, facilitating easier maintenance and scalability.
+                Throughout my tenure, I gained extensive practical experience in  working closely with cross-functional teams to optimize system performance and resolve technical challenges.
+                 My direct collaboration with the production team provided valuable insights into real-world application deployment and maintenance. I actively participated in Agile development processes, including daily stand-ups, sprint planning, and retrospective sessions
+                 . This hands-on experience with production systems and team dynamics significantly enhanced my understanding of enterprise-level software development and deployment practices.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+<section id="projects">
+  <p class="section__text__p1">Explore my </p>
+  <h1 class="title">Projects</h1>
+  <div class="experience-details-container">
+    <div class="about-containers">
+      <div class="details-container color-container">
+        <div class="article-container">
+          
+          <p><strong>Relational Database Engine (Taco-DB) </strong></p>
+          <img
+            src="./assets/taco.png"
+            alt="Project 1"
+            class="taco"
+          />
+          <p>
+            As part of my academic projects, I developed Taco-DB, a sophisticated high-performance database management system (DBMS) using C++, demonstrating strong expertise in database architecture and system optimization. The project focused on efficient data storage and retrieval mechanisms, implementing POSIX I/O for optimal file handling and enhanced data manipulation. I designed and implemented an efficient data layout system that streamlined data access and optimized storage space, significantly improving query execution performance. Through the integration of B-tree indexing and engineering of single-table query processing algorithms, I achieved substantial improvements in data retrieval speed and search efficiency across large datasets. The system successfully passed over 250+ test cases, validating its robustness and reliability. I also developed and implemented sophisticated join algorithms for efficient relational data operations, coupled with manual query optimization techniques that refined execution plans. This comprehensive approach resulted in reduced query times, optimized resource consumption, and enhanced overall database scalability, making Taco-DB a testament to my abilities in complex system design and performance optimization.
+        </div>
+      </div>
+
+
+
+
+      <div class="details-container color-container">
+        <div class="article-container">
+          <p><strong>FACE MASK DETECTION WITH ALARM USING MACHINE LEARNING </strong></p>
+         
+            <p>
+              As my final year undergraduate project, I developed an innovative Social Distancing & Face Mask Detection System with Real-Time Alert Integration, which was selected as one of the most innovative projects across the university. The system leveraged deep learning technologies to perform real-time monitoring of face mask compliance and social distancing in public spaces. Using Convolutional Neural Networks implemented with TensorFlow and Keras, I engineered a sophisticated classification system that accurately identified masked and unmasked individuals. The solution integrated seamlessly with existing surveillance systems through OpenCV for efficient image and video processing, enabling large-scale monitoring capabilities.</p>
+              <img
+              src="./assets/facemaskproj.png"
+              class="taco"/>
+              <p>A key achievement was the implementation of an automated alert mechanism that provided immediate notifications upon detecting non-compliance, significantly enhancing public safety during COVID-19. The system's architecture was optimized using a lightweight MobileNet framework deployed on edge devices, ensuring high-performance detection while maintaining computational efficiency. The project's technical merit and practical significance were validated through publication in the International Research Journal under the title "Face Mask Detection with Alarm using Machine Learning."
+            </p>
+            <img src ="./assets/people.png"
+            class="taco"/>
+            
+        </div>
+      </div>
+      <div class="details-container color-container">
+        <div class="article-container">
+          
+          <p><strong>ONLINE ELECTRONIC STORE USING ANGULARJS </strong></p>
+          <p>I developed "You and Me," an innovative online electronic store inspired by platforms like Flipkart and Amazon, showcasing my expertise in full-stack web development using Angular. The e-commerce platform features a dynamic product catalog with advanced search filtering capabilities and comprehensive user account management. By implementing NgRx for state management and optimizing performance through lazy loading techniques, I created a seamless and responsive user experience with efficient API integrations.</p>
+            <img
+            src="./assets/store.png"
+            class="macro"
+          />
+            <p>The platform's security was a top priority, incorporating robust measures including JWT-based authentication and encryption protocols to ensure secure transactions and protect user data. My proficiency in Angular, validated through certification from Credo Systems, enabled me to build a sophisticated e-commerce solution utilizing HTML, CSS, and JavaScript. The project demonstrates my ability to develop scalable, secure, and user-friendly web applications while implementing industry best practices in modern web development.</p>
+             <img
+             src="./assets/cart.png"
+             class="macro"
+           />
+           <p><strong>Here this is my certification from Credo Systems</strong></p>
+           <img
+           src="./assets/certificate_from_angular.jpg"
+           class="macro"
+         />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="Experience">
+ 
+  <div class="experience-details-container">
+    <div class="about-containers">
+      <div class="details-container color-container">
+        <div class="article-container">
+          
+          <p><strong>IOS- Real Time Camera Object Detection with Machine Learning </strong></p>
+          
+          <p>
+            I developed a sophisticated iOS application that performs real-time object detection and classification using Swift, demonstrating my expertise in mobile development and machine learning integration. The application leverages a RESNET50 model architecture built with TensorFlow-Lite, achieving an impressive 89% accuracy in classifying objects from the ImageNet dataset across 10 predefined classes. By implementing CoreML framework for on-device inference, I ensured the application maintains efficient performance without requiring internet connectivity, making it highly practical for real-world use.
+            The user experience was a key focus, as I designed an intuitive interface using Figma for prototyping and implemented it with Swift UIKit, creating a seamless and engaging user interaction. This project showcases my ability to combine advanced technologies like machine learning with practical mobile development, while maintaining a strong focus on user experience and performance optimization.
+        </div>
+      </div>
+      <div class="details-container color-container">
+        <div class="article-container">
+          <p><strong>Graduate Salary Prediction using Machine Learning </strong></p>
+         
+            <p>
+              As part of the Data Intensive Computation course, I engineered a machine learning pipeline to predict graduate salaries, incorporating variables such as educational background, work experience, and geographical location. The project involved extensive data preprocessing, including data imputation, normalization, and handling missing values to ensure high-quality inputs. Feature engineering techniques, such as one-hot encoding and polynomial transformations, were applied to better capture non-linear relationships among features. I employed advanced regression models, including linear regression, decision trees, and random forests, to optimize predictive accuracy and minimize overfitting.
+
+              Additionally, I performed rigorous exploratory data analysis (EDA) and visualized key salary trends using Seaborn and Matplotlib. The analysis allowed me to identify the most influential predictors and uncover patterns in the data, guiding feature selection. To enhance model robustness, I utilized cross-validation techniques, hyperparameter tuning via grid search, and performance metrics like RMSE and R². The final model was validated on unseen data to ensure generalizability, enabling accurate predictions for real-world applications. The project strengthened my expertise in Python, machine learning libraries such as Scikit-learn, and SQL for data extraction, along with performance tuning techniques for optimizing computational efficiency.
+              
+            
+        </div>
+      </div>
+      <div class="details-container color-container">
+        <div class="article-container">
+          <p><strong>Identifying Fake Products in the Supply Chain System </strong></p>
+         
+            <p>
+              With reference to Dr. Bina Ramamurthy's research, I spearheaded the development of a blockchain-based decentralized e-commerce application focused on combating counterfeit products in supply chains. The system leverages Solidity smart contracts deployed on Ethereum to create an immutable record of product authenticity, while React provides an intuitive frontend interface for stakeholders to track and verify products throughout the supply chain journey7. The integration of MetaMask enables secure user authentication and transaction signing, while the NoSQL database efficiently handles both on-chain and off-chain data storage, ensuring optimal performance for large-scale supply chain operations12.
+              The application's architecture incorporates a sophisticated Bonafide token system that facilitates secure and transparent transactions while maintaining a comprehensive audit trail of product movements. By utilizing distributed ledger technology, the system creates an unalterable record of each product's journey from manufacturer to consumer, with real-time verification capabilities10. The implementation of smart contracts automates compliance checks and transaction validation, while the NoSQL database's flexible schema accommodates the dynamic nature of supply chain data, enabling efficient querying and storage of product authentication records8. This technical approach significantly enhances supply chain transparency and effectively mitigates the risk of counterfeit products entering the distribution network.            
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section id="contact">
+      <p class="section__text__p1">Get in Touch</p>
+      <h1 class="title">Contact Me</h1>
+      <div class="contact-info-upper-container">
+        <div class="contact-info-container">
+          <img
+            src="./assets/email.png"
+            alt="Email icon"
+            class="icon contact-icon email-icon"
+          />
+          <p><a href="mailto:syedsrizwansr@gmail.com">syedsrizwansr@gmail.com</a></p>
+        </div>
+        <div class="contact-info-container">
+          <img
+            src="./assets/linkedin.png"
+            alt="LinkedIn icon"
+            class="icon contact-icon"
+          />
+          <p><a href="https://www.linkedin.com/in/rizwan-syed-79b798211/">LinkedIn</a></p>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <nav>
+        <div class="nav-links-container">
+          <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#Skills">Skills</a></li>
+            <li><a href="#Experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
+
