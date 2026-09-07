@@ -1,24 +1,12 @@
 "use client";
 
 import { ArrowUp, ExternalLink } from "lucide-react";
-import { motion, AnimatePresence, useMotionValue, useTransform, animate, useInView } from "framer-motion";
-import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 import Link from "next/link";
 
 function Counter({ value, decimals = 0 }: { value: number; decimals?: number }) {
-  const count = useMotionValue(1);
-  const rounded = useTransform(count, (latest) => latest.toFixed(decimals));
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  useEffect(() => {
-    if (isInView) {
-      const controls = animate(count, value, { duration: 2, ease: "easeOut" });
-      return () => controls.stop();
-    }
-  }, [count, value, isInView]);
-
-  return <motion.span ref={ref}>{rounded}</motion.span>;
+  return <span>{value.toFixed(decimals)}</span>;
 }
 
 export default function Testimonial1() {
@@ -59,7 +47,7 @@ export default function Testimonial1() {
       cta: "Explore Career",
     },
     {
-      value: 34,
+      value: 35,
       decimals: 0,
       suffix: "+",
       label: "Tech & Tools",
