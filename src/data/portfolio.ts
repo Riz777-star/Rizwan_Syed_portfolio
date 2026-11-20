@@ -1,5 +1,6 @@
 import { PortfolioData } from '@/types';
 import { researchProjects } from '@/data/research-projects';
+import { courseraAchievements, courseraBlogPosts } from '@/data/coursera-certifications';
 
 /**
  * Rizwan Syed — Portfolio Data
@@ -244,6 +245,7 @@ export const portfolioData: PortfolioData = {
     // ACHIEVEMENTS — certifications + publications
     // -----------------------------------------------------------------
     achievements: [
+        ...courseraAchievements,
         {
             id: 'cert-cissp',
             title: 'Certified Information Systems Security Professional (CISSP)',
@@ -515,6 +517,7 @@ export const portfolioData: PortfolioData = {
     // BLOG
     // -----------------------------------------------------------------
     blogs: [
+        ...courseraBlogPosts,
         {
             id: 'blog-face-mask-paper',
             slug: 'face-mask-detection-with-alarm',

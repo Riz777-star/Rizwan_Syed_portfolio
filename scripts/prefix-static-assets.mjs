@@ -6,7 +6,6 @@ const outputDir = path.resolve('out');
 const textExtensions = new Set(['.html', '.js', '.css', '.json', '.txt', '.xml']);
 const assetDirectories = [
     'about',
-    'blog',
     'certificate',
     'certificates',
     'feature',
@@ -34,8 +33,14 @@ const directoriesPattern = assetDirectories.join('|');
 const rootAssetsPattern = rootAssets
     .map((asset) => asset.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
     .join('|');
+// Blog routes share a directory name with artwork. Prefix only actual files,
+// otherwise Next's Link adds the base path a second time after hydration.
+const blogAssetsPattern = (await readdir(path.resolve('public/blog'), { withFileTypes: true }))
+    .filter((entry) => entry.isFile())
+    .map((entry) => entry.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
+    .join('|');
 const assetPattern = new RegExp(
-    `(?<!${escapedBasePath})/(?:${directoriesPattern})(?=/)|(?<!${escapedBasePath})/(?:${rootAssetsPattern})(?=[?"'\\s)\\\\]|$)`,
+    `(?<!${escapedBasePath})/(?:${directoriesPattern})(?=/)|(?<!${escapedBasePath})/blog/(?:${blogAssetsPattern})(?=[?"'\\s)\\\\]|$)|(?<!${escapedBasePath})/(?:${rootAssetsPattern})(?=[?"'\\s)\\\\]|$)`,
     'g'
 );
 

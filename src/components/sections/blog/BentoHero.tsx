@@ -77,6 +77,7 @@ export function FeatCard({ title, description, children, className = "", innerCl
 
 /* ── Card 1: Featured Carousel ── */
 function FeaturedVisual({ posts, currentSlide, isLowPowerMode }: any) {
+  const t = useTranslations('blog');
   const currentPost = posts[currentSlide];
   return (
     <div className="relative w-full h-full group flex flex-col justify-end p-6 lg:p-8 overflow-hidden rounded-[14px]">
@@ -109,25 +110,25 @@ function FeaturedVisual({ posts, currentSlide, isLowPowerMode }: any) {
           exit={isLowPowerMode ? { opacity: 0 } : { opacity: 0, y: -20 }}
           className="relative z-10 max-w-2xl"
         >
-          <div className="flex items-center gap-3 mb-4">
-            <span className="px-2.5 py-0.5 bg-foreground text-background text-[9px] font-black uppercase tracking-widest rounded-full">
+          <div className="flex flex-wrap items-center gap-3 mb-4">
+            <span className="px-2.5 py-0.5 bg-foreground text-background text-sm font-semibold rounded-full">
               Featured
             </span>
-            <span className="text-[9px] font-bold text-foreground dark:text-foreground uppercase tracking-widest bg-background/80 backdrop-blur-sm px-2 py-0.5 rounded-full shadow-sm">
-              {currentPost.category.replace(/-/g, ' ')}
+            <span className="text-sm font-medium text-foreground dark:text-foreground bg-background/80 backdrop-blur-sm px-2 py-0.5 rounded-full shadow-sm">
+              {t(`categories.${currentPost.category}`)}
             </span>
           </div>
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-foreground mb-4 leading-tight tracking-tight drop-shadow-md">
-            <Link href={`/blog/${currentPost.slug}`} className="hover:text-primary transition-colors line-clamp-2">
+            <Link href={`/blog/${currentPost.slug}`} className="hover:text-primary transition-colors">
               {currentPost.title}
             </Link>
           </h2>
           <div className="flex items-center gap-6">
             <Link
               href={`/blog/${currentPost.slug}`}
-              className="flex items-center gap-2 text-[10px] font-black text-foreground hover:text-primary transition-colors uppercase tracking-[0.2em] bg-background/80 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm"
+              className="flex items-center gap-2 text-sm font-semibold text-foreground hover:text-primary transition-colors bg-background/80 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm"
             >
-              Explore Story <ArrowUpRight className="w-3 h-3" />
+              Read the story
             </Link>
             <div className="flex gap-1.5 hidden sm:flex">
               {posts.map((_: any, i: number) => (
@@ -149,120 +150,28 @@ function FeaturedVisual({ posts, currentSlide, isLowPowerMode }: any) {
 
 /* ── Card 2: Stats Monitor ── */
 function StatsVisual({ categoryStats }: { categoryStats: { name: string, count: number }[] }) {
-  const bars = [45, 75, 35, 85, 60, 95, 50];
-  const days = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
-  const [activeIdx, setActiveIdx] = useState(0);
-  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIdx((prev) => (prev === 0 ? 1 : 0));
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
+  const totalArticles = categoryStats.reduce((total, category) => total + category.count, 0);
 
   return (
-    <div className="w-full h-full flex flex-col gap-3.5 justify-between p-2">
-      <div className="flex gap-4 pt-[0.625rem] pr-[0.625rem] pb-0.5 pl-0.5">
+    <div className="flex h-full w-full flex-col gap-7 p-5">
+      <div className="grid grid-cols-2 gap-3">
         {[
-          { label: "Total Articles", value: "10+", trend: "+2" },
-          { label: "Categories", value: "4", trend: "All" },
-        ].map((s, i) => {
-          const isActive = i === activeIdx || hoveredIdx === i;
-
-          return (
-            <div key={i} className="flex-1 h-[100px] relative select-none">
-              <div
-                className="absolute inset-0 rounded-xl border border-border/40 dark:border-border/20 bg-muted/5 text-border/30 dark:text-border/20"
-                style={{
-                  backgroundImage: "repeating-linear-gradient(45deg, transparent, transparent 6px, currentColor 6px, currentColor 7px)",
-                }}
-              />
-              <motion.div
-                className="absolute inset-0 w-full h-full rounded-xl bg-muted/20 dark:bg-neutral-950/80 border border-border/50 shadow-[inset_0_0_0_1px_rgba(255,255,255,1)] dark:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.01)] p-3 hover:bg-muted/30 transition-colors duration-300 backdrop-blur-[2px] flex items-center justify-between gap-3 cursor-pointer"
-                animate={{
-                  x: isActive ? "0.5rem" : "0rem",
-                  y: isActive ? "-0.5rem" : "0rem",
-                }}
-                transition={{ type: "spring", stiffness: 200, damping: 16 }}
-                onMouseEnter={() => setHoveredIdx(i)}
-                onMouseLeave={() => setHoveredIdx(null)}
-              >
-                <div className="flex flex-col min-w-0">
-                  <span className="text-[8px] text-muted-foreground/80 font-mono uppercase tracking-widest leading-none">{s.label}</span>
-                  <span className="text-base font-bold font-mono text-foreground leading-none mt-1.5 tracking-tight">{s.value}</span>
-                  <div className="flex items-center gap-1.5 mt-2">
-                    <span className="text-[8px] font-mono font-bold text-emerald-500">
-                      {s.trend}
-                    </span>
-                    <span className="text-[8px] text-muted-foreground/50 font-mono">new</span>
-                  </div>
-                </div>
-
-                <div className="w-12 h-6 flex items-center justify-center shrink-0">
-                  <svg className="w-full h-full overflow-visible" viewBox="0 0 48 24">
-                    <motion.path
-                      d={i === 0
-                        ? "M 0 18 L 16 11 L 32 14 L 48 4"
-                        : "M 0 4 L 16 12 L 32 8 L 48 18"
-                      }
-                      fill="none"
-                      stroke="currentColor"
-                      className="text-muted-foreground/30 dark:text-muted-foreground/20"
-                      strokeWidth="1"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      initial={{ pathLength: 0 }}
-                      animate={{ pathLength: 1 }}
-                      transition={{ duration: 0.8, delay: 0.2 + i * 0.15, ease: "easeOut" }}
-                    />
-                    {(i === 0
-                      ? [{ x: 0, y: 18 }, { x: 16, y: 11 }, { x: 32, y: 14 }, { x: 48, y: 4 }]
-                      : [{ x: 0, y: 4 }, { x: 16, y: 12 }, { x: 32, y: 8 }, { x: 48, y: 18 }]
-                    ).map((pt, idx) => (
-                      <motion.circle
-                        key={idx}
-                        cx={pt.x}
-                        cy={pt.y}
-                        r="1.5"
-                        className="fill-background stroke-muted-foreground/40 dark:stroke-muted-foreground/30"
-                        strokeWidth="1"
-                        initial={{ scale: 0, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        transition={{ delay: 0.5 + idx * 0.08, duration: 0.25 }}
-                      />
-                    ))}
-                  </svg>
-                </div>
-              </motion.div>
-            </div>
-          );
-        })}
-      </div>
-
-      <div className="flex-1 flex items-end gap-2.5 px-0.5 min-h-[70px]">
-        {bars.map((h, i) => (
-          <div
-            key={i}
-            className="flex-1 h-full rounded-xl dark:bg-neutral-950/80 border border-border/80 dark:border-border/30 relative overflow-hidden bg-muted/5 text-border/40 dark:text-border/20"
-            style={{
-              backgroundImage: "repeating-linear-gradient(45deg, transparent, transparent 6px, currentColor 6px, currentColor 7px)",
-            }}
-          >
-            <motion.div
-              className="absolute bottom-0 left-0 right-0 bg-primary border-t border-x border-primary/80 shadow-[inset_0_0.5px_0_0_rgba(255,255,255,0.6),inset_0_8px_12px_0_rgba(255,255,255,0.03),inset_0.5px_0_0_0_rgba(255,255,255,0.2),inset_0_2px_6px_0_rgba(255,255,255,0.3),inset_0_-0.5px_0_0_rgba(0,0,0,0.2),inset_-0.5px_0_0_0_rgba(0,0,0,0.1),inset_0_-2px_6px_0_rgba(0,0,0,0.1),0_1px_2px_0_rgba(0,0,0,0.08),0_2px_4px_0_rgba(0,0,0,0.06),0_4px_6px_0_rgba(0,0,0,0.04),inset_0_-4px_8px_0_rgba(0,0,0,0.05)] rounded-t-[10px]"
-              initial={{ height: "0%" }}
-              animate={{
-                height: [`${h}%`, `${Math.min(95, h + 15)}%`, `${Math.max(10, h - 20)}%`, `${Math.min(90, h + 8)}%`, `${h}%`],
-              }}
-              transition={{ repeat: Infinity, duration: 3 + (i % 3) * 0.8, ease: "easeInOut", delay: i * 0.1 }}
-            />
+          { label: 'Published articles', value: totalArticles },
+          { label: 'Categories', value: categoryStats.length },
+        ].map((stat) => (
+          <div key={stat.label} className="rounded-xl border border-border bg-background/70 p-4">
+            <p className="text-sm leading-snug text-muted-foreground">{stat.label}</p>
+            <p className="mt-3 text-3xl font-semibold tracking-tight text-foreground">{stat.value}</p>
           </div>
         ))}
       </div>
-      <div className="flex gap-2.5 px-0.5">
-        {days.map((d, i) => (
-          <p key={i} className="flex-1 text-center text-[8px] text-muted-foreground font-mono font-medium">{d}</p>
+      <div className="space-y-4">
+        <p className="text-sm font-medium text-foreground">Explore by topic</p>
+        {categoryStats.map((category) => (
+          <div key={category.name} className="flex items-center justify-between gap-4 border-b border-border/60 pb-3 text-sm">
+            <span className="text-muted-foreground">{category.name}</span>
+            <span className="font-semibold tabular-nums text-foreground">{category.count} {category.count === 1 ? 'article' : 'articles'}</span>
+          </div>
         ))}
       </div>
     </div>
@@ -328,12 +237,13 @@ const getCategoryDesign = (text: string, isActive: boolean, baseGradient: string
 };
 
 function RecentPublicationsVisual({ blogs }: { blogs: any[] }) {
+  const t = useTranslations('blog');
   // Increase to 7 items to fill the taller card space
   const logs = blogs.slice(0, 7).map((b, i) => ({
     category: b.category,
     title: b.title,
     status: i === 0 ? "recent" : "published",
-    t: new Date(b.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+    t: new Date(`${b.date}T00:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })
   }));
 
   const [activeIdx, setActiveIdx] = useState(0);
@@ -411,7 +321,7 @@ function RecentPublicationsVisual({ blogs }: { blogs: any[] }) {
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2">
                   <span className={`font-mono font-semibold text-foreground leading-none uppercase truncate max-w-[100px] ${isActive ? "text-[11px]" : "text-[10px]"}`}>
-                    {l.category.replace(/-/g, ' ')}
+                    {t(`categories.${l.category}`)}
                   </span>
                   <span className={`font-mono uppercase tracking-wider rounded px-1.5 py-0.5 ${si.bg} ${si.color} ${isActive ? "text-[8px]" : "text-[7px]"}`}>
                     {l.status}
@@ -559,9 +469,8 @@ export const BentoHero = ({ isLowPowerMode }: { isLowPowerMode?: boolean }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const featuredPosts = portfolioData.blogs.slice(0, 3);
   const categoryStats = Array.from(new Set(portfolioData.blogs.map(blog => blog.category)))
-    .slice(0, 4)
     .map(cat => ({
-      name: cat,
+      name: t(`categories.${cat}`),
       count: portfolioData.blogs.filter(b => b.category === cat).length
     }));
 
@@ -577,7 +486,7 @@ export const BentoHero = ({ isLowPowerMode }: { isLowPowerMode?: boolean }) => {
   const CARDS = [
     {
       title: "Featured Publication",
-      description: "Our latest architectural blueprints and engineering reflections.",
+      description: "Learning journeys and practical reflections on security and infrastructure.",
       visual: <FeaturedVisual posts={featuredPosts} currentSlide={currentSlide} isLowPowerMode={isLowPowerMode} />,
       colSpan: "lg:col-span-2",
       height: "h-[480px]",
@@ -613,14 +522,14 @@ export const BentoHero = ({ isLowPowerMode }: { isLowPowerMode?: boolean }) => {
     },
     {
       title: "Publication Stats",
-      description: "Articles published across various engineering categories.",
+      description: "Current articles and the topics covered in this journal.",
       visual: <StatsVisual categoryStats={categoryStats} />,
       colSpan: "lg:col-span-1",
       height: "h-[420px]",
     },
     {
       title: "Activity Feed",
-      description: "Real-time logs of latest published articles.",
+      description: "The latest stories published in this journal.",
       visual: <RecentPublicationsVisual blogs={portfolioData.blogs} />,
       colSpan: "lg:col-span-1",
       height: "h-[420px]",
@@ -672,9 +581,8 @@ export const BentoHero = ({ isLowPowerMode }: { isLowPowerMode?: boolean }) => {
             transition={{ delay: 0.8 }}
             className="text-[10px] md:text-xs font-medium text-muted-foreground/60 max-w-5xl text-center leading-relaxed tracking-wider uppercase"
           >
-            This archive serves as a living documentation of technical blueprints, architectural patterns, and engineering reflections.
-            All content is licensed under Creative Commons for educational use, bridging the gap between theory and implementation.
-            Interactive gallery items represent curated milestones of the engineering journey. © 2026 Rizwan Syed.
+            A journal of verified learning, technical research, and professional growth in cybersecurity and infrastructure.
+            Explore the credentials, the ideas behind them, and what I take into my work. © 2026 Rizwan Syed.
           </motion.p>
         </div>
       </div>

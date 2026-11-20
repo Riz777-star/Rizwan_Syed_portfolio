@@ -44,7 +44,7 @@ function BlogContent() {
     const springY = useSpring(mouseY, springConfig);
 
     const gridRef = useRef<HTMLDivElement>(null);
-    const categories = ['all', 'applied-ai', 'software-development', 'about-me', 'more'];
+    const categories = ['all', ...new Set(portfolioData.blogs.map((post) => post.category))];
 
     const filteredPosts = portfolioData.blogs
         .filter((post) => {
@@ -145,12 +145,12 @@ function BlogContent() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, type: "spring", stiffness: 400, damping: 20 }}
-                            className="text-4xl md:text-6xl lg:text-[5.5rem] font-black text-foreground leading-tight tracking-[-0.04em] uppercase whitespace-nowrap cursor-pointer group"
+                            className="text-4xl md:text-6xl lg:text-[5.5rem] font-black text-foreground leading-tight tracking-[-0.04em] uppercase group"
                         >
                             <span className="relative inline-block">
-                                <span>FEATURE &</span>{' '}
+                                <span>NOTES &amp;</span>{' '}
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-foreground via-foreground to-foreground/20">
-                                    DOCS
+                                    STORIES
                                 </span>
                                 {/* Animated underline on hover */}
                                 <span className="absolute -bottom-1 left-0 w-full h-[4px] bg-foreground scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-full" />
@@ -161,9 +161,9 @@ function BlogContent() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            className="mt-6 text-[11px] md:text-sm font-medium text-muted-foreground/80 max-w-3xl mx-auto leading-relaxed tracking-wide"
+                            className="mt-6 text-base text-muted-foreground max-w-3xl mx-auto leading-relaxed"
                         >
-                            A dedicated space for documenting technical blueprints, architectural patterns, and engineering reflections. This archive serves as a living knowledge base where innovation meets practical execution.
+                            The learning behind the credentials, the thinking behind secure systems, and the lessons I carry into my work. Explore my journey through cybersecurity, networking, and technical research.
                         </motion.p>
                     </div>
                 </header>
@@ -377,7 +377,7 @@ function BlogContent() {
                                         text: post.title,
                                         image: post.image,
                                         category: t(`categories.${post.category}`),
-                                        date: new Date(post.date).toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase()
+                                        date: new Date(`${post.date}T00:00:00Z`).toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric', timeZone: 'UTC' }).toUpperCase()
                                     }))}
                                 />
                             </div>

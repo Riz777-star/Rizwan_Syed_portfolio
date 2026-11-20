@@ -69,6 +69,8 @@ export interface Achievement {
     image?: string;
     credentialUrl?: string;
     credentialId?: string;
+    blogSlug?: string;
+    downloadUrl?: string;
     tags?: string[];
     type?: string;
     category: 'certification' | 'award' | 'recognition' | 'publication';

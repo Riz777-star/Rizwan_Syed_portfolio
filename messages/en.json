@@ -467,7 +467,7 @@
     },
     "blog": {
         "title": "Notes from the Field",
-        "subtitle": "Write-ups from real infrastructure incidents, internal tooling, and network/security operations. Coming soon.",
+        "subtitle": "Stories of continuous learning, practical security, and the thinking behind reliable infrastructure.",
         "sectionBadge": "The Digital Archive",
         "search": "Search articles...",
         "readTime": "min read",
@@ -475,6 +475,8 @@
         "back": "Back to Blog",
         "noResults": "No articles found",
         "categories": {
+            "certifications": "Certifications",
+            "Research": "Research",
             "applied-ai": "Applied AI",
             "software-development": "Software Dev",
             "about-me": "About Me",

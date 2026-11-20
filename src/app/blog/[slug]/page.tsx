@@ -6,6 +6,8 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 import { portfolioData } from '@/data/portfolio';
+import { certificationStories, courseraAchievements } from '@/data/coursera-certifications';
+import { CertificationStoryArticle } from '@/components/sections/blog/CertificationStoryArticle';
 import { Clock, Copy, Linkedin, Github, BookOpen, Link as LinkIcon, ArrowLeft, Check } from 'lucide-react';
 import { notFound, useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
@@ -49,6 +51,12 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
 
     if (!post) {
         notFound();
+    }
+
+    const certificationStory = certificationStories.find((story) => story.slug === slug);
+    const courseAchievement = courseraAchievements.find((achievement) => achievement.blogSlug === slug);
+    if (certificationStory && courseAchievement) {
+        return <CertificationStoryArticle post={post} story={certificationStory} achievement={courseAchievement} />;
     }
 
     return (

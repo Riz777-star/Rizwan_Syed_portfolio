@@ -15,6 +15,28 @@ interface BlogCardProps {
 export function BlogCard({ post, index, isHovered, isLowPowerMode }: BlogCardProps) {
     const t = useTranslations('blog');
 
+    if (post.category === 'certifications') {
+        return (
+            <Link
+                href={`/blog/${post.slug}`}
+                className="group block h-full overflow-hidden rounded-2xl border border-border bg-background transition-colors hover:border-primary/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+            >
+                <div className="relative aspect-[16/9] overflow-hidden bg-secondary/10">
+                    <Image src={post.image} alt="" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                </div>
+                <div className="p-5 sm:p-6">
+                    <p className="mb-3 text-sm font-medium text-primary">{t('categories.certifications')}</p>
+                    <h3 className="text-xl font-semibold leading-snug tracking-tight text-foreground transition-colors group-hover:text-primary sm:text-2xl">{post.title}</h3>
+                    <p className="mt-3 text-base leading-relaxed text-muted-foreground">{post.excerpt}</p>
+                    <div className="mt-5 flex flex-wrap items-center justify-between gap-2 border-t border-border pt-4 text-sm text-muted-foreground">
+                        <time dateTime={post.date}>{new Date(`${post.date}T00:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}</time>
+                        <span>{post.readTime} {t('readTime')}</span>
+                    </div>
+                </div>
+            </Link>
+        );
+    }
+
     return (
         <Link
             href={`/blog/${post.slug}`}

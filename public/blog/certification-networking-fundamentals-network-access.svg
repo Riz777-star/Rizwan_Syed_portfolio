@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Start with the foundations.</title><desc id="desc">A technical illustration for Rizwan Syed's professional learning story.</desc>
+<defs><radialGradient id="glow"><stop stop-color="#67e8f9" stop-opacity=".12"/><stop offset="1" stop-color="#07111f" stop-opacity="0"/></radialGradient><pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse"><path d="M64 0H0V64" fill="none" stroke="#a3b8cc" stroke-opacity=".06"/></pattern></defs>
+<rect width="1600" height="900" fill="#07111f"/><rect width="1600" height="900" fill="url(#grid)"/><ellipse cx="1180" cy="450" rx="480" ry="460" fill="url(#glow)"/>
+<path d="M100 180H1500" stroke="#cbd5e1" stroke-opacity=".16"/>
+<text x="100" y="125" fill="#f1f5f9" font-family="Arial,sans-serif" font-size="28" font-weight="700" letter-spacing="3">RIZWAN SYED</text><text x="1500" y="125" text-anchor="end" fill="#94a3b8" font-family="Arial,sans-serif" font-size="21" letter-spacing="3">LEARNING JOURNAL</text>
+<rect x="100" y="320" width="52" height="5" rx="2" fill="#67e8f9"/><text x="100" y="375" fill="#67e8f9" font-family="Arial,sans-serif" font-size="21" font-weight="600" letter-spacing="2">NETWORK FUNDAMENTALS / ACCESS</text>
+<text x="100" y="465" fill="#f8fafc" font-family="Arial,sans-serif" font-size="51" font-weight="700" letter-spacing="-1">Start with the foundations.</text>
+<text x="100" y="525" fill="#94a3b8" font-family="Arial,sans-serif" font-size="27">Knowledge. Practice. Perspective.</text>
+<path d="M980 560 L1190 455 L1400 560 L1190 665 Z" fill="#102536" stroke="#67e8f9" stroke-width="2"/><path d="M980 560 V590 L1190 695 L1400 590 V560" fill="none" stroke="#67e8f9" opacity=".3" stroke-width="2"/><path d="M980 460 L1190 355 L1400 460 L1190 565 Z" fill="#102536" stroke="#67e8f9" stroke-width="2"/><path d="M980 460 V490 L1190 595 L1400 490 V460" fill="none" stroke="#67e8f9" opacity=".3" stroke-width="2"/><path d="M980 360 L1190 255 L1400 360 L1190 465 Z" fill="#102536" stroke="#67e8f9" stroke-width="2"/><path d="M980 360 V390 L1190 495 L1400 390 V360" fill="none" stroke="#67e8f9" opacity=".3" stroke-width="2"/>
+<path d="M100 740H1500" stroke="#cbd5e1" stroke-opacity=".16"/><text x="100" y="800" fill="#94a3b8" font-family="Arial,sans-serif" font-size="22">SECURITY / NETWORKS / INFRASTRUCTURE</text><text x="1500" y="800" text-anchor="end" fill="#67e8f9" font-family="Arial,sans-serif" font-size="22">2026</text>
+</svg>
