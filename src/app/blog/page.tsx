@@ -17,9 +17,27 @@ import { DeferredMount } from '@/components/ui/DeferredMount';
 
 import FlowingMenu from '@/components/ui/flowing-menu';
 
+// Isolate URL-dependent rendering so the archive remains in the initial HTML.
+function SearchParamsSync({
+    setSearchQuery,
+    setSelectedCategory,
+}: {
+    setSearchQuery: (value: string) => void;
+    setSelectedCategory: (value: string) => void;
+}) {
+    const searchParams = useSearchParams();
+
+    useEffect(() => {
+        const q = searchParams.get('q');
+        setSearchQuery(q ?? '');
+        if (q) setSelectedCategory('all');
+    }, [searchParams, setSearchQuery, setSelectedCategory]);
+
+    return null;
+}
+
 function BlogContent() {
     const t = useTranslations('blog');
-    const searchParams = useSearchParams();
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [currentPage, setCurrentPage] = useState(1);
@@ -69,16 +87,6 @@ function BlogContent() {
         (currentPage - 1) * POSTS_PER_PAGE,
         currentPage * POSTS_PER_PAGE
     );
-
-    // Handle URL parameters for search
-    useEffect(() => {
-        const q = searchParams.get('q');
-        if (q) {
-            setSearchQuery(q);
-            // Optional: reset category if searching via URL tags
-            setSelectedCategory('all');
-        }
-    }, [searchParams]);
 
     // Reset pagination when category or search changes
     useEffect(() => {
@@ -134,6 +142,12 @@ function BlogContent() {
 
     return (
         <main className="min-h-screen bg-background selection:bg-primary/30">
+            <Suspense fallback={null}>
+                <SearchParamsSync
+                    setSearchQuery={setSearchQuery}
+                    setSelectedCategory={setSelectedCategory}
+                />
+            </Suspense>
             {/* STICKY PARALLAX WRAPPER */}
             <div className="relative z-10 w-full pt-[25vh]">
                 
@@ -453,9 +467,5 @@ function BlogContent() {
     );
 }
 export default function BlogPage() {
-    return (
-        <Suspense fallback={<div className="min-h-screen bg-background animate-pulse" />}>
-            <BlogContent />
-        </Suspense>
-    );
+    return <BlogContent />;
 }

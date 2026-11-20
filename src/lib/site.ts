@@ -1,4 +1,6 @@
-// Set by the deployment workflow from the active GitHub Pages configuration.
+import type { Metadata } from 'next';
+
+// Set by the deployment workflow from the active hosting configuration.
 // Keep the working Pages URL until a custom domain is actually configured.
 export const SITE_URL = (
     process.env.NEXT_PUBLIC_SITE_URL || 'https://riz777-star.github.io/Rizwan_Syed_portfolio'
@@ -8,4 +10,45 @@ export const SITE_URL = (
 export function siteUrl(path = '/'): string {
     if (/^https?:\/\//i.test(path)) return path;
     return `${SITE_URL}/${path.replace(/^\/+/, '')}`;
+}
+
+interface PageMetadataOptions {
+    title: string;
+    description: string;
+    path: string;
+    image?: string;
+    imageAlt?: string;
+}
+
+export function createPageMetadata({
+    title,
+    description,
+    path,
+    image = '/about/rizwan.jpg',
+    imageAlt = 'Rizwan Syed — IT Security Administrator',
+}: PageMetadataOptions): Metadata {
+    const pageUrl = siteUrl(path);
+    const imageUrl = siteUrl(image);
+    const socialTitle = `${title} | Rizwan Syed`;
+
+    return {
+        title,
+        description,
+        alternates: { canonical: pageUrl },
+        openGraph: {
+            type: 'website',
+            locale: 'en_US',
+            siteName: 'Rizwan Syed',
+            url: pageUrl,
+            title: socialTitle,
+            description,
+            images: [{ url: imageUrl, alt: imageAlt }],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: socialTitle,
+            description,
+            images: [{ url: imageUrl, alt: imageAlt }],
+        },
+    };
 }

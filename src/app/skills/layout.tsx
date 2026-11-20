@@ -1,9 +1,10 @@
-import type { Metadata } from 'next';
+import { createPageMetadata } from '@/lib/site';
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
     title: 'Skills',
-    description: 'My technical skills, tech stack, and tools I work with.',
-};
+    description: "Rizwan Syed's technical skills across cybersecurity, networking, systems administration, cloud infrastructure, and automation.",
+    path: '/skills/',
+});
 
 export default function SkillsLayout({
     children,

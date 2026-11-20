@@ -51,6 +51,7 @@ export const metadata: Metadata = {
     authors: [{ name: 'Rizwan Syed', url: 'https://linkedin.com/in/rizwan-syed-79b798211' }],
     creator: 'Rizwan Syed',
     metadataBase: new URL(`${SITE_URL}/`),
+    alternates: { canonical: siteUrl() },
     openGraph: {
         type: 'website',
         locale: 'en_US',

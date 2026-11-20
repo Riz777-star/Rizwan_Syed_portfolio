@@ -1,9 +1,10 @@
-import type { Metadata } from 'next';
+import { createPageMetadata } from '@/lib/site';
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
     title: 'Achievements',
-    description: 'My certifications, awards, and accomplishments.',
-};
+    description: 'Professional certifications, Coursera learning achievements, and research publications from Rizwan Syed.',
+    path: '/achievements/',
+});
 
 export default function AchievementsLayout({
     children,

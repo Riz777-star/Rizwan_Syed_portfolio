@@ -1,9 +1,10 @@
-import type { Metadata } from 'next';
+import { createPageMetadata } from '@/lib/site';
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
     title: 'Contact',
-    description: 'Get in touch with me for collaborations and opportunities.',
-};
+    description: 'Contact Rizwan Syed about cybersecurity, infrastructure, automation, and collaboration opportunities.',
+    path: '/contact/',
+});
 
 export default function ContactLayout({
     children,
