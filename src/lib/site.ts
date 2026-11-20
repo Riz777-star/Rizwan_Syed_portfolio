@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 
 // Set by the deployment workflow from the active hosting configuration.
-// Keep the working Pages URL until a custom domain is actually configured.
+// Cloudflare Pages is the primary host; other deployments share its canonicals.
 export const SITE_URL = (
-    process.env.NEXT_PUBLIC_SITE_URL || 'https://riz777-star.github.io/Rizwan_Syed_portfolio'
+    process.env.NEXT_PUBLIC_SITE_URL || 'https://rizwansyed.pages.dev'
 ).replace(/\/$/, '');
 
 /** Resolve a public URL without discarding a GitHub Pages repository base path. */

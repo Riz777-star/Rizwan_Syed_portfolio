@@ -37,7 +37,7 @@ jobs:
       - name: Build static portfolio
         env:
           NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
-          NEXT_PUBLIC_SITE_URL: ${{ steps.pages.outputs.base_url }}
+          NEXT_PUBLIC_SITE_URL: https://rizwansyed.pages.dev
         run: |
           npm run build
           node scripts/prefix-static-assets.mjs

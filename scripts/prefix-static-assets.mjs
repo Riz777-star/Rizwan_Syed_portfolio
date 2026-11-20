@@ -59,7 +59,15 @@ async function processDirectory(directory) {
             if (!textExtensions.has(path.extname(entry.name))) return;
 
             const original = await readFile(entryPath, 'utf8');
-            const updated = original.replace(assetPattern, (assetPath) => `${basePath}${assetPath}`);
+            // Metadata and remote media URLs must keep their original host/path.
+            // Paired parentheses belong to URLs; an unmatched ')' ends CSS url().
+            const absoluteUrls = Array.from(original.matchAll(/https?:\/\/(?:[^\s"'<>\\()]|\([^()\s"'<>\\]*\))+/gi));
+            const updated = original.replace(assetPattern, (assetPath, offset) => {
+                const isAbsoluteUrl = absoluteUrls.some((url) =>
+                    offset >= url.index && offset < url.index + url[0].length
+                );
+                return isAbsoluteUrl ? assetPath : `${basePath}${assetPath}`;
+            });
 
             if (updated !== original) {
                 await writeFile(entryPath, updated);
