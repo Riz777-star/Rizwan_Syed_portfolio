@@ -28,6 +28,7 @@ jobs:
           cache: npm
 
       - name: Configure GitHub Pages
+        id: pages
         uses: actions/configure-pages@v5
 
       - name: Install dependencies
@@ -35,7 +36,8 @@ jobs:
 
       - name: Build static portfolio
         env:
-          NEXT_PUBLIC_BASE_PATH: /Rizwan_Syed_portfolio
+          NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          NEXT_PUBLIC_SITE_URL: ${{ steps.pages.outputs.base_url }}
         run: |
           npm run build
           node scripts/prefix-static-assets.mjs

@@ -3,7 +3,11 @@ import createNextIntlPlugin from 'next-intl/plugin';
 
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 const isGitHubPages = process.env.GITHUB_ACTIONS === 'true';
-const basePath = isGitHubPages ? '/Rizwan_Syed_portfolio' : '';
+// A custom domain serves the same export at the origin root. Preserve an
+// explicitly empty base path from actions/configure-pages in that case.
+const basePath = isGitHubPages
+    ? (process.env.NEXT_PUBLIC_BASE_PATH ?? '/Rizwan_Syed_portfolio')
+    : '';
 
 const nextConfig: NextConfig = {
     reactStrictMode: true,

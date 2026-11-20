@@ -1,7 +1,7 @@
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '/Rizwan_Syed_portfolio';
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '/Rizwan_Syed_portfolio';
 const outputDir = path.resolve('out');
 const textExtensions = new Set(['.html', '.js', '.css', '.json', '.txt', '.xml']);
 const assetDirectories = [
@@ -68,7 +68,7 @@ async function processDirectory(directory) {
     );
 }
 
-await processDirectory(outputDir);
+if (basePath) await processDirectory(outputDir);
 await writeFile(path.join(outputDir, '.nojekyll'), '');
 
-console.log(`Prefixed static assets with ${basePath}`);
+console.log(basePath ? `Prefixed static assets with ${basePath}` : 'Static assets use the custom-domain root');

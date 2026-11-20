@@ -1,15 +1,15 @@
 import type { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { portfolioData } from '@/data/portfolio';
+import { siteUrl } from '@/lib/site';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const { slug } = await params;
     const post = portfolioData.blogs.find((item) => item.slug === slug);
     if (!post) return { title: 'Article not found' };
 
-    const publicSiteUrl = 'https://riz777-star.github.io/Rizwan_Syed_portfolio';
-    const image = `${publicSiteUrl}${post.image}`;
-    const articleUrl = `${publicSiteUrl}/blog/${post.slug}/`;
+    const image = siteUrl(post.image);
+    const articleUrl = siteUrl(`/blog/${post.slug}/`);
     return {
         title: post.title,
         description: post.excerpt,

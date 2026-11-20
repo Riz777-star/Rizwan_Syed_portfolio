@@ -2,6 +2,7 @@ import { PortfolioData } from '@/types';
 import { researchProjects } from '@/data/research-projects';
 import { courseraAchievements, courseraBlogPosts } from '@/data/coursera-certifications';
 import { blogImages } from '@/data/blog-images';
+import { SITE_URL } from '@/lib/site';
 
 /**
  * Rizwan Syed — Portfolio Data
@@ -34,7 +35,7 @@ export const portfolioData: PortfolioData = {
         location: 'New York, USA',
         email: 'syedsrizwansr@gmail.com',
         resumeUrl: '/resume',
-        website: 'https://rizwansyed.dev',
+        website: SITE_URL,
         languages: [
             { name: 'English', level: 'Fluent' },
             { name: 'Telugu', level: 'Native' },

@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from 'next';
 import { Inter, JetBrains_Mono, Playfair_Display, Alex_Brush } from 'next/font/google';
 import { getMessages, getLocale } from 'next-intl/server';
 import { ThemeProvider, I18nProvider, SmoothScrollProvider } from '@/providers';
+import { portfolioData } from '@/data/portfolio';
+import { SITE_URL, siteUrl } from '@/lib/site';
 
 import '@/styles/globals.css';
 
@@ -42,35 +44,24 @@ export const metadata: Metadata = {
         'Infrastructure Engineer',
         'Network Administrator',
         'IT Security Administrator',
-        'Windows Server',
-        'Active Directory',
-        'VMware',
-        'Veeam',
-        'Palo Alto',
-        'Dell SONiC',
-        'Microsoft 365',
-        'Azure',
-        'AWS',
-        'SQL Server',
-        'PowerShell',
-        'Automation',
+        'Cybersecurity',
+        'Infrastructure Automation',
+        'Technical Portfolio',
     ],
     authors: [{ name: 'Rizwan Syed', url: 'https://linkedin.com/in/rizwan-syed-79b798211' }],
     creator: 'Rizwan Syed',
-    metadataBase: new URL('https://rizwansyed.dev'),
+    metadataBase: new URL(`${SITE_URL}/`),
     openGraph: {
         type: 'website',
         locale: 'en_US',
-        url: 'https://rizwansyed.dev',
+        url: siteUrl(),
         title: 'Rizwan Syed | IT Security Administrator',
         description:
             'Cybersecurity • Networks • Infrastructure • Automation • Cloud — 4+ years across enterprise IT, with internal tooling backed by SQL Server.',
         siteName: 'Rizwan Syed',
         images: [
             {
-                        url: '/about/rizwan.jpg',
-                width: 1200,
-                height: 630,
+                url: siteUrl('/about/rizwan.jpg'),
                 alt: 'Rizwan Syed — IT Security Administrator',
             },
         ],
@@ -80,7 +71,7 @@ export const metadata: Metadata = {
         title: 'Rizwan Syed | IT Security Administrator',
         description:
             'Cybersecurity • Networks • Infrastructure • Automation • Cloud — 4+ years across enterprise IT.',
-        images: ['/about/rizwan.jpg'],
+        images: [siteUrl('/about/rizwan.jpg')],
     },
     robots: {
         index: true,
@@ -95,8 +86,8 @@ export const metadata: Metadata = {
     },
     icons: {
         icon: [
-            { url: '/RS_light.svg', media: '(prefers-color-scheme: light)' },
-            { url: '/RS_dark.svg', media: '(prefers-color-scheme: dark)' },
+            { url: siteUrl('/RS_light.svg'), media: '(prefers-color-scheme: light)' },
+            { url: siteUrl('/RS_dark.svg'), media: '(prefers-color-scheme: dark)' },
         ],
     },
 };
@@ -122,10 +113,42 @@ export default async function RootLayout({
 }) {
     const locale = await getLocale();
     const messages = await getMessages();
+    const profile = portfolioData.personal;
+    const personId = siteUrl('/#person');
+    const structuredData = {
+        '@context': 'https://schema.org',
+        '@graph': [
+            {
+                '@type': 'Person',
+                '@id': personId,
+                name: profile.name,
+                jobTitle: profile.title,
+                url: siteUrl(),
+                image: siteUrl(profile.avatar),
+                description: 'IT Security Administrator working across enterprise cybersecurity, networking, infrastructure, and automation.',
+                sameAs: profile.socialLinks
+                    .filter((link) => ['LinkedIn', 'GitHub', 'Instagram'].includes(link.platform))
+                    .map((link) => link.url),
+            },
+            {
+                '@type': 'WebSite',
+                '@id': siteUrl('/#website'),
+                url: siteUrl(),
+                name: `${profile.name} — Technical Portfolio`,
+                description: 'Projects, professional experience, verified learning, and articles about cybersecurity and infrastructure.',
+                publisher: { '@id': personId },
+                inLanguage: locale,
+            },
+        ],
+    };
 
     return (
         <html lang={locale} data-scroll-behavior="smooth" suppressHydrationWarning>
             <body className={`${inter.variable} ${jetbrainsMono.variable} ${playfair.variable} ${signature.variable} font-sans relative`}>
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }}
+                />
                 <ThemeProvider>
                     <I18nProvider locale={locale} messages={messages}>
                         <SmoothScrollProvider>
