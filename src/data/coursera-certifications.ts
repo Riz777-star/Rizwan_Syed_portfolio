@@ -1,4 +1,5 @@
 import type { Achievement, BlogPost } from '@/types';
+import { blogImages } from '@/data/blog-images';
 
 export interface CertificationStory {
     slug: string;
@@ -350,7 +351,7 @@ export const courseraBlogPosts: BlogPost[] = certificationStories.map((story) =>
         slug: story.slug,
         ...editorial[story.credentialId],
         content,
-        image: `/blog/certification-${story.slug}.svg`,
+        ...blogImages[story.slug],
         date: '2026-11-20',
         category: 'certifications',
         tags: achievement.tags ?? [],

@@ -73,9 +73,12 @@ export function CertificationStoryArticle({ post, story, achievement }: Certific
                             <span role="status" className="text-sm text-muted-foreground">{copyStatus === 'unavailable' ? 'You can copy the address from your browser.' : ''}</span>
                         </div>
                     </div>
-                    <div className="relative mt-10 aspect-[16/9] overflow-hidden rounded-2xl border border-border bg-secondary/10">
-                        <Image src={post.image} alt="" fill sizes="(max-width: 1200px) 100vw, 1152px" className="object-cover" preload />
-                    </div>
+                    <figure className="mt-10">
+                        <div className="relative aspect-[16/9] overflow-hidden rounded-2xl border border-border bg-secondary/10">
+                            <Image src={post.image} alt={post.imageAlt || post.title} fill sizes="(max-width: 1200px) 100vw, 1152px" className="object-cover" preload />
+                        </div>
+                        {post.imageCredit && <figcaption className="mt-3 text-sm text-muted-foreground">Image: <a href={post.imageCredit.url} target="_blank" rel="noopener noreferrer" className="underline decoration-border underline-offset-4 hover:text-foreground">{post.imageCredit.name}</a> / Unsplash</figcaption>}
+                    </figure>
                 </header>
 
                 <div className="grid gap-12 py-10 sm:py-14 lg:grid-cols-[minmax(0,1fr)_260px] lg:gap-16">
@@ -153,7 +156,7 @@ export function CertificationStoryArticle({ post, story, achievement }: Certific
                     <div className="grid gap-6 sm:grid-cols-2">
                         {relatedPosts.map((related) => (
                             <Link key={related.slug} href={`/blog/${related.slug}`} className="group overflow-hidden rounded-2xl border border-border transition-colors hover:border-primary/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
-                                <div className="relative aspect-[16/9] overflow-hidden bg-secondary/10"><Image src={related.image} alt="" fill sizes="(max-width: 640px) 100vw, 560px" className="object-cover transition-transform duration-500 group-hover:scale-105" /></div>
+                                <div className="relative aspect-[16/9] overflow-hidden bg-secondary/10"><Image src={related.image} alt={related.imageAlt || related.title} fill sizes="(max-width: 640px) 100vw, 560px" className="object-cover transition-transform duration-500 group-hover:scale-105" /></div>
                                 <div className="p-5 sm:p-6"><p className="mb-3 text-sm text-muted-foreground">Learning journal · {related.readTime} min read</p><h3 className="text-xl font-semibold leading-snug group-hover:text-primary">{related.title}</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">{related.excerpt}</p></div>
                             </Link>
                         ))}

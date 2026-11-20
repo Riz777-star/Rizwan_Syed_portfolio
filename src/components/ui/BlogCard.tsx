@@ -22,7 +22,7 @@ export function BlogCard({ post, index, isHovered, isLowPowerMode }: BlogCardPro
                 className="group block h-full overflow-hidden rounded-2xl border border-border bg-background transition-colors hover:border-primary/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
             >
                 <div className="relative aspect-[16/9] overflow-hidden bg-secondary/10">
-                    <Image src={post.image} alt="" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <Image src={post.image} alt={post.imageAlt || post.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
                 </div>
                 <div className="p-5 sm:p-6">
                     <p className="mb-3 text-sm font-medium text-primary">{t('categories.certifications')}</p>
@@ -56,7 +56,7 @@ export function BlogCard({ post, index, isHovered, isLowPowerMode }: BlogCardPro
                 {/* Immersive Background Image */}
                 <Image
                     src={post.image}
-                    alt={post.title}
+                    alt={post.imageAlt || post.title}
                     fill
                     className={cn(
                         "object-cover transition-transform duration-1000",
@@ -67,8 +67,8 @@ export function BlogCard({ post, index, isHovered, isLowPowerMode }: BlogCardPro
 
                 {/* Permanent Gradient Overlay for Legibility */}
                 <div className={cn(
-                    "absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent transition-opacity duration-700",
-                    isHovered ? "opacity-95" : "opacity-70"
+                    "absolute inset-0 bg-gradient-to-t from-black/85 via-black/15 to-transparent transition-opacity duration-700",
+                    isHovered ? "opacity-100" : "opacity-90"
                 )} />
 
                 {/* Integrated Content Overlay */}

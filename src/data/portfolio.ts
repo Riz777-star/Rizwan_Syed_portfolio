@@ -1,6 +1,7 @@
 import { PortfolioData } from '@/types';
 import { researchProjects } from '@/data/research-projects';
 import { courseraAchievements, courseraBlogPosts } from '@/data/coursera-certifications';
+import { blogImages } from '@/data/blog-images';
 
 /**
  * Rizwan Syed — Portfolio Data
@@ -526,7 +527,7 @@ export const portfolioData: PortfolioData = {
                 'A published computer-vision system combining CNN-based mask classification, YOLOv3 social-distance analysis, and real-time visual and audible alerts.',
             content:
                 '# Face Mask Detection with Alarm using Machine Learning\n\nPublished in IRJMETS, Volume 05, Issue 03, March 2023.\n\nThe system combines a MobileNet-based convolutional neural network for mask classification with YOLOv3 person detection and Euclidean-distance analysis. Video frames are processed in real time using OpenCV. When the pipeline detects a person without a mask or identifies unsafe distancing, it highlights the violation and activates an alarm.\n\nThe project demonstrates how lightweight deep-learning models can turn a standard camera feed into an automated public-health monitoring tool.\n\nDOI: 10.56726/IRJMETS34706',
-            image: '/blog/face-mask-detection.svg',
+            ...blogImages['face-mask-detection-with-alarm'],
             date: '2023-03-01',
             category: 'Research',
             tags: ['Machine Learning', 'Computer Vision', 'CNN', 'MobileNet', 'YOLOv3', 'OpenCV'],

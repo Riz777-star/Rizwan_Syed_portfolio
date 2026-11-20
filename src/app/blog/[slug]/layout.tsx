@@ -7,9 +7,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     const post = portfolioData.blogs.find((item) => item.slug === slug);
     if (!post) return { title: 'Article not found' };
 
-    const certificate = portfolioData.achievements.find((item) => item.blogSlug === slug);
     const publicSiteUrl = 'https://riz777-star.github.io/Rizwan_Syed_portfolio';
-    const image = `${publicSiteUrl}${certificate?.image || post.image}`;
+    const image = `${publicSiteUrl}${post.image}`;
     const articleUrl = `${publicSiteUrl}/blog/${post.slug}/`;
     return {
         title: post.title,
@@ -25,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             publishedTime: `${post.date}T00:00:00Z`,
             authors: [post.author.name],
             tags: post.tags,
-            images: [{ url: image, alt: certificate?.title || post.title }],
+            images: [{ url: image, alt: post.imageAlt || post.title }],
         },
         twitter: {
             card: 'summary_large_image',

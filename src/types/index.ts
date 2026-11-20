@@ -143,6 +143,8 @@ export interface BlogPost {
     excerpt: string;
     content: string;
     image: string;
+    imageAlt?: string;
+    imageCredit?: { name: string; url: string };
     date: string;
     category: string;
     tags: string[];

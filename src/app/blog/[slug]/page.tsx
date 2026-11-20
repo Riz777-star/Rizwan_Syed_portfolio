@@ -90,7 +90,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
             </div>
 
             {/* Hero Image */}
-            <div className="container max-w-7xl mx-auto px-6 mb-12">
+            <figure className="container max-w-7xl mx-auto px-6 mb-12">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -99,15 +99,15 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                 >
                     <Image
                         src={post.image}
-                        alt={post.title}
+                        alt={post.imageAlt || post.title}
                         fill
                         sizes="100vw"
                         className="object-cover"
                         priority
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                 </motion.div>
-            </div>
+                {post.imageCredit && <figcaption className="mt-3 text-sm text-muted-foreground">Image: <a href={post.imageCredit.url} target="_blank" rel="noopener noreferrer" className="underline decoration-border underline-offset-4 hover:text-foreground">{post.imageCredit.name}</a> / Unsplash</figcaption>}
+            </figure>
 
             {/* Metadata Bar */}
             <div className="container max-w-7xl mx-auto px-6 mb-16">
@@ -1251,7 +1251,7 @@ model.save_pretrained_gguf("model_name", tokenizer, quantization_method = "q4_k_
                     {portfolioData.blogs.filter(b => b.slug !== slug).slice(0, 2).map((b) => (
                         <div key={b.slug} className="group">
                             <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden mb-6 bg-secondary/5 border border-border/40">
-                                <Image src={b.image} alt={b.title} fill sizes="(max-width: 768px) 100vw, 300px" loading="lazy" className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                                <Image src={b.image} alt={b.imageAlt || b.title} fill sizes="(max-width: 768px) 100vw, 300px" loading="lazy" className="object-cover group-hover:scale-105 transition-transform duration-700" />
                                 <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors" />
                                 <div className="absolute bottom-4 left-4">
                                     <span className="px-3 py-1 bg-black/50 backdrop-blur-md border border-white/10 rounded-full text-[10px] font-bold text-white uppercase tracking-wider">

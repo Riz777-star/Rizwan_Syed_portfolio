@@ -93,12 +93,12 @@ function FeaturedVisual({ posts, currentSlide, isLowPowerMode }: any) {
         >
           <Image
             src={currentPost.image}
-            alt={currentPost.title}
+            alt={currentPost.imageAlt || currentPost.title}
             fill
             sizes="(max-width: 1024px) 100vw, 800px"
-            className="object-cover opacity-60 grayscale-[30%] group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110"
+            className="object-cover transition-transform duration-1000 group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
         </motion.div>
       </AnimatePresence>
 
@@ -111,22 +111,22 @@ function FeaturedVisual({ posts, currentSlide, isLowPowerMode }: any) {
           className="relative z-10 max-w-2xl"
         >
           <div className="flex flex-wrap items-center gap-3 mb-4">
-            <span className="px-2.5 py-0.5 bg-foreground text-background text-sm font-semibold rounded-full">
+            <span className="px-2.5 py-0.5 bg-white text-slate-950 text-sm font-semibold rounded-full">
               Featured
             </span>
-            <span className="text-sm font-medium text-foreground dark:text-foreground bg-background/80 backdrop-blur-sm px-2 py-0.5 rounded-full shadow-sm">
+            <span className="text-sm font-medium text-white bg-black/40 border border-white/20 backdrop-blur-sm px-2 py-0.5 rounded-full shadow-sm">
               {t(`categories.${currentPost.category}`)}
             </span>
           </div>
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-foreground mb-4 leading-tight tracking-tight drop-shadow-md">
-            <Link href={`/blog/${currentPost.slug}`} className="hover:text-primary transition-colors">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-4 leading-tight tracking-tight drop-shadow-md">
+            <Link href={`/blog/${currentPost.slug}`} className="hover:text-white/80 transition-colors">
               {currentPost.title}
             </Link>
           </h2>
           <div className="flex items-center gap-6">
             <Link
               href={`/blog/${currentPost.slug}`}
-              className="flex items-center gap-2 text-sm font-semibold text-foreground hover:text-primary transition-colors bg-background/80 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm"
+              className="flex items-center gap-2 text-sm font-semibold text-slate-950 transition-colors bg-white hover:bg-white/90 px-3 py-1.5 rounded-full shadow-sm"
             >
               Read the story
             </Link>
@@ -136,7 +136,7 @@ function FeaturedVisual({ posts, currentSlide, isLowPowerMode }: any) {
                   key={i}
                   className={cn(
                     "h-1 transition-all duration-500 rounded-full",
-                    currentSlide === i ? "w-6 bg-primary" : "w-1.5 bg-foreground/20 dark:bg-white/40"
+                    currentSlide === i ? "w-6 bg-white" : "w-1.5 bg-white/40"
                   )}
                 />
               ))}

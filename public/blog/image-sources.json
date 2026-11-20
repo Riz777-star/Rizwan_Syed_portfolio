@@ -1,0 +1,56 @@
+{
+  "checkedOn": "2026-11-20",
+  "license": "Unsplash License",
+  "licenseUrl": "https://unsplash.com/license",
+  "usage": "Illustrative editorial cover images, not photographs of the author's workplaces or projects.",
+  "assets": [
+    {
+      "filename": "ccna-data-center.jpg",
+      "storySlug": "cisco-ccna-specialization-learning-journey",
+      "creator": "Taylor Vick",
+      "sourcePage": "https://unsplash.com/photos/server-room-with-network-cabinets-aWslrFhs1w4",
+      "downloadUrl": "https://images.unsplash.com/photo-1564457461758-8ff96e439e83?auto=format&fit=crop&fm=jpg&q=80&w=1600",
+      "alt": "Rows of server cabinets beneath overhead network cabling in a bright data center."
+    },
+    {
+      "filename": "network-fundamentals.jpg",
+      "storySlug": "networking-fundamentals-network-access",
+      "creator": "Albert Stoynov",
+      "sourcePage": "https://unsplash.com/photos/a-close-up-of-a-network-with-wires-connected-to-it-dyUp7WPu5q4",
+      "downloadUrl": "https://images.unsplash.com/photo-1691435828932-911a7801adfb?auto=format&fit=crop&fm=jpg&q=80&w=1600",
+      "alt": "Ethernet cables connected to rack-mounted network switches with illuminated status lights."
+    },
+    {
+      "filename": "cissp-security-infrastructure.jpg",
+      "storySlug": "cissp-specialization-security-perspective",
+      "creator": "Taylor Vick",
+      "sourcePage": "https://unsplash.com/photos/cable-network-M5tzZtFCOfs",
+      "downloadUrl": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&fm=jpg&q=80&w=1600",
+      "alt": "Network equipment and cabling behind closed mesh server-cabinet doors."
+    },
+    {
+      "filename": "ai-cybersecurity.jpg",
+      "storySlug": "generative-ai-cybersecurity-learning-journey",
+      "creator": "Omar:. Lopez-Rincon",
+      "sourcePage": "https://unsplash.com/photos/an-ai-chip-on-a-circuit-board-sNt81Whsncg",
+      "downloadUrl": "https://images.unsplash.com/photo-1749006590639-e749e6b7d84c?fm=jpg&q=85&w=1600&h=900&fit=crop",
+      "alt": "An illustrated AI processor surrounded by violet and turquoise circuitry."
+    },
+    {
+      "filename": "security-assessment.jpg",
+      "storySlug": "cybersecurity-assessment-security-plus-cysa",
+      "creator": "Chris Ried",
+      "sourcePage": "https://unsplash.com/photos/a-computer-screen-with-a-bunch-of-code-on-it-ieic5Tq8YMk",
+      "downloadUrl": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?fm=jpg&q=85&w=1600&h=900&fit=crop",
+      "alt": "A close-up of syntax-highlighted Python code on a computer screen."
+    },
+    {
+      "filename": "computer-vision.jpg",
+      "storySlug": "face-mask-detection-with-alarm",
+      "creator": "Nathy dog",
+      "sourcePage": "https://unsplash.com/photos/white-security-camera-at-daytime-z1uDmJx3ZEQ",
+      "downloadUrl": "https://images.unsplash.com/photo-1510849911856-cdc9335e5597?fm=jpg&q=85&w=1600&h=900&fit=crop",
+      "alt": "An outdoor video camera beneath a blue, cloud-filled sky."
+    }
+  ]
+}
